@@ -1,5 +1,6 @@
 import difflib
 import itertools
+import random
 from _pytest.runner import CollectReport
 
 import pytest
@@ -364,6 +365,7 @@ class LoadScheduling:
         # Collections are identical, create the index of pending items.
         self.collection = list(self.node2collection.values())[0]
         self.pending[:] = range(len(self.collection))
+        random.shuffle(self.pending)
         if not self.collection:
             return
 
